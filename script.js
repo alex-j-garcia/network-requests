@@ -22,7 +22,7 @@
       let div = document.createElement("DIV");
       div.classList.add("film");
       div.setAttribute("id", film.id);
-      div.style.backgroundImage = film.movie_banner;
+      div.style.backgroundImage = `url(${film.movie_banner})`;
       div.innerHTML = `
         <h1>${film.title}</h1>
         <p>${film.description}</p>
