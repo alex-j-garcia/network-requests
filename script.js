@@ -22,10 +22,15 @@
       let div = document.createElement("DIV");
       div.classList.add("film");
       div.setAttribute("id", film.id);
-      div.style.backgroundImage = `url(${film.movie_banner})`;
       div.innerHTML = `
-        <h1>${film.title}</h1>
-        <p>${film.description}</p>
+        <img
+          src="${film.movie_banner}"
+          alt="Movie banner for ${film.title}"
+        >
+        <div class="content">
+          <h1>${film.title}</h1>
+          <p>${film.description}</p>
+        </div>
       `;
       container.appendChild(div);
     }
