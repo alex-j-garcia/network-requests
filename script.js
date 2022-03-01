@@ -7,6 +7,9 @@
       .then((body) => limitFields(body))
       .then((payload) => {
         createDivs(payload);
+      })
+      .catch((reason) => {
+        console.log(reason);
       });
   };
 
@@ -46,6 +49,10 @@
       `;
       container.appendChild(div);
     }
+  };
+
+  const triggerModal = (reason) => {
+    
   };
 
   init();
