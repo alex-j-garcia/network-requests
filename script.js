@@ -10,19 +10,15 @@
       });
   };
 
-  /*
-   * Networks can sometimes fail. Create a function that
-   * returns a promise that can fail sometimes.
-   */
   const networkRequest = () => {
     let randInt = Math.floor(Math.random() * 10);
-    return new Promise((fulfill, reject) => {
+    return new Promise((resolve, reject) => {
       if (randInt < 1) {
         reject("Network Error");
       }
 
       let response = fetch("https://ghibliapi.herokuapp.com/films?limit=9");
-      fulfill(response);
+      resolve(response);
     });
   };
 
