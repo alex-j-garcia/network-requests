@@ -69,7 +69,9 @@
 
   const triggerModal = (reason) => {
     let modal = document.querySelector(".error-modal");
+    let span = document.querySelector(".reason");
     modal.style.display = "block";
+    span.textContent = reason;
   };
 
   init();
