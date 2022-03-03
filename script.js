@@ -2,27 +2,43 @@
 
 (function() {
   const init = () => {
-    networkRequest()
+    makeRequest()
       .then((response) => response.json())
       .then((body) => limitFields(body))
       .then((payload) => {
         createDivs(payload);
       })
       .catch((reason) => {
-        console.log(reason);
+        triggerModal(reason);
       });
   };
 
-  const networkRequest = () => {
-    let randInt = Math.floor(Math.random() * 10);
+  const makeRequest = () => {
     return new Promise((resolve, reject) => {
-      if (randInt < 1) {
-        reject("Network Error");
+      let done = false;
+      function attempt(n) {
+        networkRequest((value) => {
+          done = true;
+          resolve(value);
+        });
+        setTimeout(() => {
+          if (done) return;
+          else if (n < 3) attempt(n + 1);
+          else reject("Network error");
+        }, 0);
       }
 
-      let response = fetch("https://ghibliapi.herokuapp.com/films?limit=9");
-      resolve(response);
+      attempt(1);
     });
+  };
+
+  const networkRequest = (callback) => {
+    let failureRate = Math.floor(Math.random() * 10);
+    if (failureRate < 4) {
+      setTimeout(() => {
+        callback(fetch("https://ghibliapi.herokuapp.com/films"));
+      }, 10);
+    }
   };
 
   const limitFields = (payload) => (
@@ -52,7 +68,8 @@
   };
 
   const triggerModal = (reason) => {
-    
+    let modal = document.querySelector(".error-modal");
+    modal.style.display = "block";
   };
 
   init();
