@@ -68,9 +68,13 @@
   };
 
   const triggerModal = (reason) => {
+    let container = document.querySelector(".container");
+    container.style.display = "none";
+    
     let modal = document.querySelector(".error-modal");
-    let span = document.querySelector(".reason");
     modal.style.display = "block";
+
+    let span = document.querySelector(".reason");
     span.textContent = reason;
   };
 
