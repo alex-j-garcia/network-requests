@@ -4,7 +4,6 @@
   const init = () => {
     makeRequest()
       .then((response) => response.json())
-      .then((body) => limitFields(body))
       .then((payload) => {
         createDivs(payload);
       })
@@ -40,12 +39,6 @@
       }, 10);
     }
   };
-
-  const limitFields = (payload) => (
-    payload.map(({ id, title, description, movie_banner, }) => (
-      { id, title, description, movie_banner, }
-    ))
-  );
 
   const createDivs = (films) => {
     let container = document.querySelector(".container");
