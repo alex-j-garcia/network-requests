@@ -50,20 +50,17 @@
   const createDivs = (films) => {
     let container = document.querySelector(".container");
     for (let film of films) {
-      let div = document.createElement("DIV");
-      let description = film.description.substring(0, 300);
+      let div = document.createElement("div");
       div.classList.add("film");
-      div.setAttribute("id", film.id);
-      div.innerHTML = `
-        <img
-          src="${film.movie_banner}"
-          alt="Movie banner for ${film.title}"
-        >
-        <div class="content">
-          <h1>${film.title}</h1>
-          <p>${description}...</p>
-        </div>
-      `;
+
+      let title = document.createElement("h1");
+      title.textContent = film.title;
+
+      let p = document.createElement("p");
+      p.textContent = `${film.description.substring(0, 300)}...`;
+
+      div.appendChild(title);
+      div.appendChild(p);
       container.appendChild(div);
     }
   };
