@@ -49,7 +49,7 @@ img {
 }
 
 h1 {
-  margin-bottom: 1rem;
+  margin: 1rem;
   text-align: center;
 }
 
@@ -81,14 +81,15 @@ p {
 }
 
 .error-modal h1 {
-  margin-bottom: 1.5rem;
+  margin: 0 0 1.5rem 0;
   padding-left: 3rem;
   font-family: 'Times New Roman', Times, serif;
   text-align: left;
 }
 
 .error-modal p {
-  margin-bottom: 1rem;
+  margin: 0 0 1rem 0;
+  padding: 0;
 }
 
 .error-modal span {
