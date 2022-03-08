@@ -33,7 +33,7 @@
 
   const networkRequest = (callback) => {
     let failureRate = Math.floor(Math.random() * 10);
-    if (failureRate < 4) {
+    if (failureRate < 5) {
       setTimeout(() => {
         callback(fetch("https://ghibliapi.herokuapp.com/films"));
       }, 10);
