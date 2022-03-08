@@ -51,6 +51,7 @@
     let container = document.querySelector(".container");
     for (let film of films) {
       let div = document.createElement("DIV");
+      let description = film.description.substring(0, 300);
       div.classList.add("film");
       div.setAttribute("id", film.id);
       div.innerHTML = `
@@ -60,7 +61,7 @@
         >
         <div class="content">
           <h1>${film.title}</h1>
-          <p>${film.description}</p>
+          <p>${description}...</p>
         </div>
       `;
       container.appendChild(div);
